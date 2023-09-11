@@ -1,0 +1,79 @@
+<div class="forum-header">
+  <h1>Fórum de discussão</h1>
+  <mat-card-content class="mat-card-content">
+    <div class="search-button">
+      <mat-form-field>
+        <input matInput placeholder="Busque um tópico" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+</div>
+
+<div class="topic-card">
+  <mat-card class="borderMatCard">
+    <mat-card-content>
+      Este é um espaço onde você pode participar de discussões, trocar informações, fazer perguntas, compartilhar opiniões e interagir com outras pessoas que tenham interesses semelhantes.
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<hr />
+
+<mat-card>
+  <mat-card-content>
+    <div class="topicoPost">
+      <img
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        class="round-image-Topic"
+      />
+      <form class="formPost">
+        <a>Digite o que você deseja compartilhar com a empresa:</a>
+        <mat-form-field class="input-container">
+          <textarea matInput class="custom-textarea" placeholder="O que eu quero compartilhar agora?"></textarea>
+        </mat-form-field>
+        <button>Criar Tópico</button>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div *ngFor="let topico of topicos">
+  <mat-card>
+    <mat-card-content>
+      <div class="topicoPost">
+        <div class="post-content">
+          <div class="post-header">
+            <p class="post-topic">#{{ topico.id }} Tópico para Discussão</p>
+            <p class="post-date">Postado por {{ topico.donoDaPostagem }}</p>
+          </div>
+          <mat-card class="post-text">
+            {{ showFullText ? topico.msg : (topico.msg | slice:0:200) }}
+          </mat-card>
+          <button class="ver-mais-button" (click)="toggleText()">Ver Mais</button>
+          <!-- Área de Comentários -->
+          <hr>
+          <!-- Exibir comentários -->
+          <div *ngFor="let comentario of topico.comentarios">
+            <mat-card class="comentario-card">
+              <mat-card-content>
+                <div class="comentario">
+                  <img
+                    src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                    class="round-image-coment"
+                  />
+                  <p>{{ comentario.msg }}</p>
+                  <p class="comentario-info">Comentado por {{ comentario.donoDaPostagem }} em {{ comentario.data }}</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="comentarios">
+            <textarea matInput class="custom-textarea" placeholder="Digite seu comentário..."></textarea>
+            <button class="comentar-button">Comentar</button>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

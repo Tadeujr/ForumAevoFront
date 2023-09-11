@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  color:#6F6E72;
+}
+/* // texto #6F6E72 borda #E5E5E5 texto secundario #333137 */
